@@ -1,13 +1,15 @@
+import { isParamTemplate, sanitizeParams } from '../../utils';
+
 type ExtractOptionalParamsFn = (url: string, path: string) => Record<string, unknown>;
 
 const extractOptionalParams: ExtractOptionalParamsFn = (url, path) => {
   const optionalParams: Record<string, unknown> = {};
 
-  const urlParams = url.split('/').filter(Boolean);
-  const pathParams = path.split('/').filter(Boolean);
+  const urlParams = sanitizeParams(url);
+  const pathParams = sanitizeParams(path);
 
   pathParams.forEach((param, index) => {
-    if (param.includes(':')) {
+    if (isParamTemplate(param)) {
       optionalParams[param] = urlParams[index];
     }
   });

@@ -1,7 +1,6 @@
 import server, { router } from '../../core';
 
 server.middleware(({ next, metadata }) => {
-  // TODO
   metadata.set('platform', 'faster framework');
 
   console.log('this middleware run before all routes');

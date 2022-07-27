@@ -1,4 +1,5 @@
 import HttpMethods from '../../constants/httpMethods';
+import { isParamTemplate, sanitizeParams } from '../../utils';
 import { RouteObserver } from './protocols';
 
 interface MatchRouteOptions {
@@ -18,15 +19,15 @@ const matchRoute: MatchRouteFn = ({ url, method, route }) => {
     return true;
   }
 
-  const pathParams = route.path.split('/').filter(Boolean);
-  const urlParams = url.split('/').filter(Boolean);
+  const pathParams = sanitizeParams(route.path);
+  const urlParams = sanitizeParams(url);
 
   if (pathParams.length !== urlParams.length) {
     return false;
   }
 
   const matchedParams = pathParams.every((param, index) => (
-    param === urlParams[index] || (param.includes(':') && urlParams[index])
+    param === urlParams[index] || (isParamTemplate(param) && urlParams[index])
   ));
 
   return matchedParams;

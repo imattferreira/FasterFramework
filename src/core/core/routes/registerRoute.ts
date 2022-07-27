@@ -22,8 +22,12 @@ const put: RegisterRouteFn = (path, callback) => registerRoute('PUT', path, call
 
 const del: RegisterRouteFn = (path, callback) => registerRoute('DELETE', path, callback);
 
-const route = {
-  get, post, patch, put, del,
-};
+const route = Object.freeze({
+  get,
+  post,
+  patch,
+  put,
+  del,
+});
 
 export default route;
