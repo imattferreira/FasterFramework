@@ -1,10 +1,8 @@
-import { IncomingHttpHeaders, IncomingMessage } from "http";
+import { IncomingHttpHeaders, IncomingMessage } from 'http';
 
-import HttpMethods from "../../constants/httpMethods";
+import HttpMethods from '../../constants/httpMethods';
 
 type HttpHeaders = IncomingHttpHeaders;
-
-export type MakeRequest = (request: IncomingMessage) => Promise<HttpRequest>;
 
 export interface HttpRequest {
   url: string;
@@ -13,6 +11,8 @@ export interface HttpRequest {
   params: Record<string, unknown>;
   headers: HttpHeaders;
 }
+
+export type MakeRequest = (request: IncomingMessage) => Promise<HttpRequest>;
 
 export interface NestedRequest extends IncomingMessage {
   url: string;

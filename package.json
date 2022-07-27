@@ -5,10 +5,17 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/examples/simple-server/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint --ext .ts ./src"
   },
   "devDependencies": {
     "@types/node": "^17.0.24",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"

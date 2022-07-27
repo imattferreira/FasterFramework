@@ -8,7 +8,7 @@ const deepComparation: DeepComparationFn = (obj1, obj2) => {
     return false;
   }
 
-  for (const key of keys1) {
+  const result = Object.keys(keys1).every((key) => {
     const val1 = obj1[key] as any;
     const val2 = obj2[key] as any;
 
@@ -23,9 +23,11 @@ const deepComparation: DeepComparationFn = (obj1, obj2) => {
     if (val1 !== val2) {
       return false;
     }
-  }
 
-  return true;
-}
+    return true;
+  });
+
+  return result;
+};
 
 export default deepComparation;

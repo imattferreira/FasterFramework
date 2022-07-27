@@ -1,5 +1,5 @@
-import bodyParser from "../../utils/bodyParser";
-import { MakeRequest, NestedRequest } from "./protocols";
+import bodyParser from '../../utils/bodyParser';
+import { MakeRequest, NestedRequest } from './protocols';
 
 const ALLOWED_METHODS_TO_SEND_BODY = ['POST', 'PUT', 'PATCH'];
 
@@ -19,6 +19,6 @@ const makeRequest: MakeRequest = async (request) => {
     url,
     method,
   };
-}
+};
 
 export default makeRequest;

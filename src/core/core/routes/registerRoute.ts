@@ -1,17 +1,16 @@
-import Observers from "../../Observers";
-import { RegisterGenericRouteFn, RegisterRouteFn, RouteObserver } from "./protocols";
-
-import KEYS from "../../constants/keys";
+import KEYS from '../../constants/keys';
+import Observers from '../../Observers';
+import { RegisterGenericRouteFn, RegisterRouteFn, RouteObserver } from './protocols';
 
 const registerRoute: RegisterGenericRouteFn = (method, path, callback) => {
   const route: RouteObserver = {
     path,
-    method: method,
+    method,
     execute: callback,
   };
 
   Observers.subscribe<RouteObserver>(KEYS.ROUTES, route);
-}
+};
 
 const get: RegisterRouteFn = (path, callback) => registerRoute('GET', path, callback);
 
@@ -23,6 +22,8 @@ const put: RegisterRouteFn = (path, callback) => registerRoute('PUT', path, call
 
 const del: RegisterRouteFn = (path, callback) => registerRoute('DELETE', path, callback);
 
-const route = { get, post, patch, put, del };
+const route = {
+  get, post, patch, put, del,
+};
 
 export default route;

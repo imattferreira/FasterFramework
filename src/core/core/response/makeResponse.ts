@@ -1,6 +1,5 @@
-import { HttpResponse, MakeResponse } from "./protocols";
-
-import HttpCodes from "../../constants/httpCodes";
+import HttpCodes from '../../constants/httpCodes';
+import { HttpResponse, MakeResponse } from './protocols';
 
 const makeResponse: MakeResponse = (response) => {
   let statusCode = 200;
@@ -27,6 +26,6 @@ const makeResponse: MakeResponse = (response) => {
       return this;
     },
   };
-}
+};
 
 export default makeResponse;

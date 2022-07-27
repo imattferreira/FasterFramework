@@ -1,6 +1,5 @@
-import { CallbackOptions } from "../../protocols";
-
-import HttpMethods from "../../constants/httpMethods";
+import HttpMethods from '../../constants/httpMethods';
+import { CallbackOptions } from '../../protocols';
 
 export type RouteCallback = (options: CallbackOptions) => void;
 

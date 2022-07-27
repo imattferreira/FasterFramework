@@ -1,6 +1,7 @@
 import server, { router } from '../../core';
 
-server.middleware(({ request, response, next, metadata }) => {
+server.middleware(({ next, metadata }) => {
+  // TODO
   metadata.platform = 'faster framework';
 
   console.log('this middleware run before all routes');
@@ -8,28 +9,26 @@ server.middleware(({ request, response, next, metadata }) => {
   next();
 });
 
-router.get('/', ({ request, response, metadata }) => {
+router.get('/', ({ response, metadata }) => {
   response.json({ message: 'hello world!', platform: metadata?.platform });
 });
 
 router.get('/:id', ({ request, response }) => {
-  console.log(request.params)
+  console.log(request.params);
   response.json({ message: `hello ${request.params?.id}` });
 });
 
-server.middleware(({ request, response, next }) => {
+server.middleware(({ next }) => {
   console.log('this middleware run only before /user routes');
   next();
 });
 
 router.post('/user', ({ request, response }) => {
   response.json({ ...request.body });
-})
+});
 
 router.get('/user/:id', ({ request, response }) => {
   response.json({ message: `hello user  with id: ${request.params?.id}` });
 });
 
-server.listen(3000, (port) =>
-  console.log(`\n[INFO]: 🚀 server running at: http://localhost:${port}`)
-);
+server.listen(3000, (port) => console.log(`\n[INFO]: 🚀 server running at: http://localhost:${port}`));

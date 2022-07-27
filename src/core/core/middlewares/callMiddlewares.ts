@@ -1,4 +1,4 @@
-import { CallMiddlewaresFn, CallNextMiddlewareFn } from "./protocols";
+import { CallMiddlewaresFn, CallNextMiddlewareFn } from './protocols';
 
 let position = 0;
 
@@ -15,9 +15,9 @@ const callMiddlewares: CallMiddlewaresFn = ({
       next: () => callNextMiddleware(middlewares && middlewares[position += 1]),
       metadata,
     });
-  }
+  };
 
   callNextMiddleware(middlewares[position]);
-}
+};
 
 export default callMiddlewares;

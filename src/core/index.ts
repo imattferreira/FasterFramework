@@ -1,23 +1,22 @@
-import makeServer from "./core/server/makeServer";
-import registerMiddleware from "./core/middlewares/registerMiddleware";
-import router from './core/routes/registerRoute';
-
 import HttpCodes from './constants/httpCodes';
-import HttpMethods from "./constants/httpMethods";
+import HttpMethods from './constants/httpMethods';
+import registerMiddleware from './core/middlewares/registerMiddleware';
+import router from './core/routes/registerRoute';
+import makeServer from './core/server/makeServer';
 
 const server = makeServer();
 
-const listen = (port: number, callback: (port: number) => void) => {
+const listen = (port: number, callback: (serverPort: number) => void) => {
   server.listen(port, () => callback(port));
-}
-
-export default {
-  listen,
-  middleware: registerMiddleware
 };
 
+export default Object.freeze({
+  listen,
+  middleware: registerMiddleware,
+});
+
 export {
-  router,
   HttpCodes,
   HttpMethods,
+  router,
 };

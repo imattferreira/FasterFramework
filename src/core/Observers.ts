@@ -1,5 +1,5 @@
-import deepComparation from "./utils/deepComparation";
-import isDev from "./utils/isDev";
+import deepComparation from './utils/deepComparation';
+import isDev from './utils/isDev';
 
 class Observers {
   private observers: Map<string, Record<string, unknown>[]>;
@@ -19,12 +19,12 @@ class Observers {
       return;
     }
 
-    const observerExists = observers.find(observer => (
+    const observerExists = observers.find((observer) => (
       deepComparation(observer, newObserver as Record<string, unknown>)
     ));
 
-    if (observerExists) {
-      isDev() && console.log(`[INFO]: the observer ${newObserver}, present in ${key} already exists`);
+    if (observerExists && isDev()) {
+      console.log(`[INFO]: the observer ${newObserver}, present in ${key} already exists`);
       return;
     }
 
@@ -35,7 +35,7 @@ class Observers {
     const observers = this.observers.get(key);
 
     if (observers && observers.length > 0) {
-      const filteredObservers = observers.filter(existingObserver => (
+      const filteredObservers = observers.filter((existingObserver) => (
         deepComparation(observer, existingObserver)
       ));
 

@@ -1,6 +1,5 @@
-import { RouteObserver } from "./protocols";
-
-import HttpMethods from "../../constants/httpMethods";
+import HttpMethods from '../../constants/httpMethods';
+import { RouteObserver } from './protocols';
 
 interface MatchRouteOptions {
   url: string;
@@ -8,7 +7,7 @@ interface MatchRouteOptions {
   route: RouteObserver;
 }
 
-type MatchRouteFn = ({url, method, route}: MatchRouteOptions) => boolean;
+type MatchRouteFn = ({ url, method, route }: MatchRouteOptions) => boolean;
 
 const matchRoute: MatchRouteFn = ({ url, method, route }) => {
   if (route.method !== method) {
@@ -31,6 +30,6 @@ const matchRoute: MatchRouteFn = ({ url, method, route }) => {
   ));
 
   return matchedParams;
-}
+};
 
 export default matchRoute;
