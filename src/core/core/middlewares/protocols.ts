@@ -18,7 +18,7 @@ interface CallMiddlewaresOptions {
   request: HttpRequest;
   response: HttpResponse;
   middlewares: MiddlewareObserver[];
-  metadata: Record<string, unknown>;
+  metadata: Map<string, unknown>;
 }
 export type CallMiddlewaresFn = (options: CallMiddlewaresOptions) => void;
 

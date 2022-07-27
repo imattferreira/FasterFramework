@@ -2,7 +2,7 @@ import server, { router } from '../../core';
 
 server.middleware(({ next, metadata }) => {
   // TODO
-  metadata.platform = 'faster framework';
+  metadata.set('platform', 'faster framework');
 
   console.log('this middleware run before all routes');
 
@@ -10,7 +10,7 @@ server.middleware(({ next, metadata }) => {
 });
 
 router.get('/', ({ response, metadata }) => {
-  response.json({ message: 'hello world!', platform: metadata?.platform });
+  response.json({ message: 'hello world!', platform: metadata.get('platform') });
 });
 
 router.get('/:id', ({ request, response }) => {

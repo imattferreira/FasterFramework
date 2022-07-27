@@ -4,5 +4,5 @@ import { HttpResponse } from './core/response/protocols';
 export interface CallbackOptions {
   request: HttpRequest;
   response: HttpResponse;
-  metadata: Record<string, unknown>;
+  metadata: Map<string, unknown>;
 }

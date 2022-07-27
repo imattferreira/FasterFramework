@@ -14,7 +14,7 @@ const serverHandler: ServerHandlerFn = async (httpRequest, httpResponse) => {
   const { url, method } = httpRequest as NestedRequest;
   const request = await makeRequest(httpRequest);
   const response = makeResponse(httpResponse);
-  const metadata: Record<string, unknown> = {};
+  const metadata: Map<string, unknown> = new Map();
 
   const middlewares = Observers.getFromKey<MiddlewareObserver[]>(KEYS.MIDDLEWARES);
   const routes = Observers.getFromKey<RouteObserver[]>(KEYS.ROUTES);
